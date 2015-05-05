@@ -17,6 +17,7 @@
 		DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */; };
 		DC1608261AF859FC00C0E891 /* PIDemoPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608251AF859FC00C0E891 /* PIDemoPerson.m */; };
 		DC16082A1AF85B9700C0E891 /* PIDemoBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */; };
+		DC16082C1AF85CA200C0E891 /* PIDemoPersonSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoModelProtocol.h; sourceTree = "<group>"; };
 		DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoBlogPost.h; sourceTree = "<group>"; };
 		DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoBlogPost.m; sourceTree = "<group>"; };
+		DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoPersonSpec.m; sourceTree = "<group>"; };
 		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 			children = (
 				DC1608141AF84B0800C0E891 /* Supporting Files */,
 				DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */,
+				DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */,
 			);
 			path = "kiwi-blocks-demoTests";
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */,
+				DC16082C1AF85CA200C0E891 /* PIDemoPersonSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
