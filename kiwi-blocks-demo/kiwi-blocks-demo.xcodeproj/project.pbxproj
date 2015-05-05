@@ -14,7 +14,7 @@
 		DC1608061AF84B0800C0E891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1608041AF84B0800C0E891 /* Main.storyboard */; };
 		DC1608081AF84B0800C0E891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC1608071AF84B0800C0E891 /* Images.xcassets */; };
 		DC16080B1AF84B0800C0E891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1608091AF84B0800C0E891 /* LaunchScreen.xib */; };
-		DC1608171AF84B0800C0E891 /* kiwi_blocks_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608161AF84B0800C0E891 /* kiwi_blocks_demoTests.m */; };
+		DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		DC16080A1AF84B0800C0E891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DC1608101AF84B0800C0E891 /* kiwi-blocks-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kiwi-blocks-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1608151AF84B0800C0E891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC1608161AF84B0800C0E891 /* kiwi_blocks_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kiwi_blocks_demoTests.m; sourceTree = "<group>"; };
+		DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoTestSpec.m; sourceTree = "<group>"; };
 		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,8 +129,8 @@
 		DC1608131AF84B0800C0E891 /* kiwi-blocks-demoTests */ = {
 			isa = PBXGroup;
 			children = (
-				DC1608161AF84B0800C0E891 /* kiwi_blocks_demoTests.m */,
 				DC1608141AF84B0800C0E891 /* Supporting Files */,
+				DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */,
 			);
 			path = "kiwi-blocks-demoTests";
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1608171AF84B0800C0E891 /* kiwi_blocks_demoTests.m in Sources */,
+				DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
