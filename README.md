@@ -1,2 +1,2 @@
 # kiwi-blocks-demo
-A demo project that demonstrates how the Kiwi testing framework works with blocks
+An example project demonstrating how the Kiwi testing framework works with blocks
