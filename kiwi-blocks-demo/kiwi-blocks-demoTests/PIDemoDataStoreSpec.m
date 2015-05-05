@@ -18,8 +18,6 @@ describe(@"PIDemoDataStore", ^{
 
   describe(@"Class method: fetchPeopleWithCompletion:", ^{
 
-    typedef void (^PIDemoDataStoreFetchPeopleCallback)(NSArray *people,
-                                                       NSError *error);
     typedef void (^PIDemoServerCallback)(id JSON, NSError *error);
 
     context(@"Data fetched successfully", ^{
@@ -52,23 +50,22 @@ describe(@"PIDemoDataStore", ^{
                                  }
                              ]
                      };
-            
-            [PIDemoServer
-               stub:@selector(GET:parameters:completion:)
-               withBlock:^id(NSArray *params) {
-                   
-                   PIDemoServerCallback completion = params[2];
-                   completion(json, nil);
-                   
-                   return nil;
-               }];
-            
         });
         
-        it(@"Should deserialize into Person objects", ^{
+        it(@"Should deserialize into Person objects V1", ^{
             
             __block PIDemoPerson *leela;
             __block PIDemoPerson *professor;
+            
+            [PIDemoServer
+             stub:@selector(GET:parameters:completion:)
+             withBlock:^id(NSArray *params) {
+                 
+                 PIDemoServerCallback completion = params[2];
+                 completion(json, nil);
+                 
+                 return nil;
+             }];
             
             [PIDemoDataStore fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
                                             leela = people[0];
@@ -93,26 +90,30 @@ describe(@"PIDemoDataStore", ^{
             
         });
         
-        it(@"Should call completion block with data", ^{
-
-        __block id peopleFetched;
-        NSArray *testPeople = @[ @"person 1", @"person 2" ];
-        KWCaptureSpy *successBlockSpy = [PIDemoDataStore
-            captureArgument:@selector(fetchPeopleWithCompletion:)
-                    atIndex:0];
-
-        [PIDemoDataStore
-            fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
-              peopleFetched = people;
-            }];
-
-        PIDemoDataStoreFetchPeopleCallback successBlock =
-            successBlockSpy.argument;
-        successBlock(testPeople, nil);
-
-        [[expectFutureValue(peopleFetched) shouldEventually] equal:testPeople];
-
-      });
+        it(@"Should deserialize into Person objects V2", ^{
+            
+            KWCaptureSpy *serverCompletionBlockSpy = [PIDemoServer captureArgument:@selector(GET:parameters:completion:) atIndex:2];
+            
+            [[PIDemoServer should] receive:@selector(GET:parameters:completion:) withArguments:@"people", @{ @"apiKey" : @"abc" }, any()];
+            
+            __block PIDemoPerson *leela;
+            __block PIDemoPerson *professor;
+            
+            [PIDemoDataStore
+             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
+                 leela = people[0];
+                 professor = people[1];
+             }];
+            
+            PIDemoServerCallback serverCompletionBlock =
+            serverCompletionBlockSpy.argument;
+            serverCompletionBlock(json, nil);
+            
+            [[leela.name should] equal:@"Leela"];
+            
+            [[professor.name should] equal:@"Professor Farnsworth"];
+            
+        });
 
     });
 
