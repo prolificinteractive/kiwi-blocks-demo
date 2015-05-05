@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PIDemoViewController.h
 //  kiwi-blocks-demo
 //
 //  Created by Harlan Kellaway on 5/4/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface PIDemoViewController : UIViewController
 
 
 @end

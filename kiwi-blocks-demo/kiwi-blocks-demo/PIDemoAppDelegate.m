@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  PIDemoAppDelegate.m
 //  kiwi-blocks-demo
 //
 //  Created by Harlan Kellaway on 5/4/15.
 //  Copyright (c) 2015 Prolific Interactive. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "PIDemoAppDelegate.h"
 
-@interface AppDelegate ()
+@interface PIDemoAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation PIDemoAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

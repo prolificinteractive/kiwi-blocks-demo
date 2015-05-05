@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  PIDemoAppDelegate.h
 //  kiwi-blocks-demo
 //
 //  Created by Harlan Kellaway on 5/4/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface PIDemoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

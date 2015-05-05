@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  PIDemoViewController.m
 //  kiwi-blocks-demo
 //
 //  Created by Harlan Kellaway on 5/4/15.
 //  Copyright (c) 2015 Prolific Interactive. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PIDemoViewController.h"
 
-@interface ViewController ()
+@interface PIDemoViewController ()
 
 @end
 
-@implementation ViewController
+@implementation PIDemoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
