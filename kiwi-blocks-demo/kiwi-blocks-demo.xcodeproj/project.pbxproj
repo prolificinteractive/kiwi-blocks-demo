@@ -21,6 +21,7 @@
 		DC16082E1AF8632000C0E891 /* PIDemoBlogPostSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC16082D1AF8632000C0E891 /* PIDemoBlogPostSpec.m */; };
 		DC1608311AF8641300C0E891 /* PIDemoServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608301AF8641300C0E891 /* PIDemoServer.m */; };
 		DC1608341AF86CF500C0E891 /* PIDemoDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608331AF86CF500C0E891 /* PIDemoDataStore.m */; };
+		DC1608391AF90CB100C0E891 /* PIDemoDataStoreSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608381AF90CB100C0E891 /* PIDemoDataStoreSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		DC1608301AF8641300C0E891 /* PIDemoServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoServer.m; sourceTree = "<group>"; };
 		DC1608321AF86CF500C0E891 /* PIDemoDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoDataStore.h; sourceTree = "<group>"; };
 		DC1608331AF86CF500C0E891 /* PIDemoDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoDataStore.m; sourceTree = "<group>"; };
+		DC1608381AF90CB100C0E891 /* PIDemoDataStoreSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoDataStoreSpec.m; sourceTree = "<group>"; };
 		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				DC1608141AF84B0800C0E891 /* Supporting Files */,
+				DC1608381AF90CB100C0E891 /* PIDemoDataStoreSpec.m */,
 				DC16082D1AF8632000C0E891 /* PIDemoBlogPostSpec.m */,
 				DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */,
 				DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */,
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1608391AF90CB100C0E891 /* PIDemoDataStoreSpec.m in Sources */,
 				DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */,
 				DC16082E1AF8632000C0E891 /* PIDemoBlogPostSpec.m in Sources */,
 				DC16082C1AF85CA200C0E891 /* PIDemoPersonSpec.m in Sources */,
