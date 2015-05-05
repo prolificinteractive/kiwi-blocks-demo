@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C484635F80D4F56BA7833737 /* libPods-kiwi-blocks-demoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162348BAE4760C98A844A2C7 /* libPods-kiwi-blocks-demoTests.a */; };
 		DC1607FD1AF84B0800C0E891 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1607FC1AF84B0800C0E891 /* main.m */; };
 		DC1608001AF84B0800C0E891 /* PIDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1607FF1AF84B0800C0E891 /* PIDemoAppDelegate.m */; };
 		DC1608031AF84B0800C0E891 /* PIDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608021AF84B0800C0E891 /* PIDemoViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		162348BAE4760C98A844A2C7 /* libPods-kiwi-blocks-demoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kiwi-blocks-demoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9AD25244AB615C2BFA19315 /* Pods-kiwi-blocks-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC1607F71AF84B0800C0E891 /* kiwi-blocks-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kiwi-blocks-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1607FB1AF84B0800C0E891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1607FC1AF84B0800C0E891 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		DC1608101AF84B0800C0E891 /* kiwi-blocks-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kiwi-blocks-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1608151AF84B0800C0E891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1608161AF84B0800C0E891 /* kiwi_blocks_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kiwi_blocks_demoTests.m; sourceTree = "<group>"; };
+		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,18 +58,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C484635F80D4F56BA7833737 /* libPods-kiwi-blocks-demoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0363AD6E1B1E767C8639C2B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				162348BAE4760C98A844A2C7 /* libPods-kiwi-blocks-demoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A951B538FA598BEEF86526B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */,
+				A9AD25244AB615C2BFA19315 /* Pods-kiwi-blocks-demoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DC1607EE1AF84B0700C0E891 = {
 			isa = PBXGroup;
 			children = (
 				DC1607F91AF84B0800C0E891 /* kiwi-blocks-demo */,
 				DC1608131AF84B0800C0E891 /* kiwi-blocks-demoTests */,
 				DC1607F81AF84B0800C0E891 /* Products */,
+				3A951B538FA598BEEF86526B /* Pods */,
+				0363AD6E1B1E767C8639C2B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC16081D1AF84B0800C0E891 /* Build configuration list for PBXNativeTarget "kiwi-blocks-demoTests" */;
 			buildPhases = (
+				9BBA3C14F7C2B954DD4ADE7E /* Check Pods Manifest.lock */,
 				DC16080C1AF84B0800C0E891 /* Sources */,
 				DC16080D1AF84B0800C0E891 /* Frameworks */,
 				DC16080E1AF84B0800C0E891 /* Resources */,
+				13D4FBCC4C694338903CB876 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,6 +240,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13D4FBCC4C694338903CB876 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BBA3C14F7C2B954DD4ADE7E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DC1607F31AF84B0800C0E891 /* Sources */ = {
@@ -372,6 +431,7 @@
 		};
 		DC16081E1AF84B0800C0E891 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -391,6 +451,7 @@
 		};
 		DC16081F1AF84B0800C0E891 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9AD25244AB615C2BFA19315 /* Pods-kiwi-blocks-demoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
