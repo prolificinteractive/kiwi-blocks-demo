@@ -15,6 +15,11 @@
 		DC1608081AF84B0800C0E891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC1608071AF84B0800C0E891 /* Images.xcassets */; };
 		DC16080B1AF84B0800C0E891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1608091AF84B0800C0E891 /* LaunchScreen.xib */; };
 		DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */; };
+		DC1608261AF859FC00C0E891 /* PIDemoPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608251AF859FC00C0E891 /* PIDemoPerson.m */; };
+		DC16082A1AF85B9700C0E891 /* PIDemoBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */; };
+		DC16082C1AF85CA200C0E891 /* PIDemoPersonSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */; };
+		DC16082E1AF8632000C0E891 /* PIDemoBlogPostSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC16082D1AF8632000C0E891 /* PIDemoBlogPostSpec.m */; };
+		DC1608311AF8641300C0E891 /* PIDemoServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608301AF8641300C0E891 /* PIDemoServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,15 @@
 		DC1608101AF84B0800C0E891 /* kiwi-blocks-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kiwi-blocks-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1608151AF84B0800C0E891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoTestSpec.m; sourceTree = "<group>"; };
+		DC1608241AF859FC00C0E891 /* PIDemoPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoPerson.h; sourceTree = "<group>"; };
+		DC1608251AF859FC00C0E891 /* PIDemoPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoPerson.m; sourceTree = "<group>"; };
+		DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoModelProtocol.h; sourceTree = "<group>"; };
+		DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoBlogPost.h; sourceTree = "<group>"; };
+		DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoBlogPost.m; sourceTree = "<group>"; };
+		DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoPersonSpec.m; sourceTree = "<group>"; };
+		DC16082D1AF8632000C0E891 /* PIDemoBlogPostSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoBlogPostSpec.m; sourceTree = "<group>"; };
+		DC16082F1AF8641300C0E891 /* PIDemoServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoServer.h; sourceTree = "<group>"; };
+		DC1608301AF8641300C0E891 /* PIDemoServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoServer.m; sourceTree = "<group>"; };
 		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +119,7 @@
 		DC1607F91AF84B0800C0E891 /* kiwi-blocks-demo */ = {
 			isa = PBXGroup;
 			children = (
+				DC1608231AF859CB00C0E891 /* Models */,
 				DC1607FE1AF84B0800C0E891 /* PIDemoAppDelegate.h */,
 				DC1607FF1AF84B0800C0E891 /* PIDemoAppDelegate.m */,
 				DC1608011AF84B0800C0E891 /* PIDemoViewController.h */,
@@ -130,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				DC1608141AF84B0800C0E891 /* Supporting Files */,
+				DC16082D1AF8632000C0E891 /* PIDemoBlogPostSpec.m */,
+				DC16082B1AF85CA200C0E891 /* PIDemoPersonSpec.m */,
 				DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */,
 			);
 			path = "kiwi-blocks-demoTests";
@@ -141,6 +158,20 @@
 				DC1608151AF84B0800C0E891 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC1608231AF859CB00C0E891 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */,
+				DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */,
+				DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */,
+				DC1608241AF859FC00C0E891 /* PIDemoPerson.h */,
+				DC1608251AF859FC00C0E891 /* PIDemoPerson.m */,
+				DC16082F1AF8641300C0E891 /* PIDemoServer.h */,
+				DC1608301AF8641300C0E891 /* PIDemoServer.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +312,9 @@
 			files = (
 				DC1608031AF84B0800C0E891 /* PIDemoViewController.m in Sources */,
 				DC1608001AF84B0800C0E891 /* PIDemoAppDelegate.m in Sources */,
+				DC1608311AF8641300C0E891 /* PIDemoServer.m in Sources */,
+				DC1608261AF859FC00C0E891 /* PIDemoPerson.m in Sources */,
+				DC16082A1AF85B9700C0E891 /* PIDemoBlogPost.m in Sources */,
 				DC1607FD1AF84B0800C0E891 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +324,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */,
+				DC16082E1AF8632000C0E891 /* PIDemoBlogPostSpec.m in Sources */,
+				DC16082C1AF85CA200C0E891 /* PIDemoPersonSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
