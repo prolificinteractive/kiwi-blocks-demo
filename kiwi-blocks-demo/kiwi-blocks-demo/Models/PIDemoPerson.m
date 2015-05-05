@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Prolific Interactive. All rights reserved.
 //
 
+#import "PIDemoBlogPost.h"
 #import "PIDemoPerson.h"
 
 @implementation PIDemoPerson
@@ -20,7 +21,15 @@
 
   person.name = JSONDictionary[@"name"];
   person.role = JSONDictionary[@"role"];
-  person.blogPosts = @[];
+
+  NSMutableArray *blogPosts = [NSMutableArray array];
+  for (NSDictionary *blogPostJSON in JSONDictionary[@"blog_posts"]) {
+    PIDemoBlogPost *blogPost =
+        [PIDemoBlogPost modelFromJSONDictionary:blogPostJSON];
+    [blogPosts addObject:blogPost];
+  }
+
+  person.blogPosts = [blogPosts copy];
 
   return person;
 }
