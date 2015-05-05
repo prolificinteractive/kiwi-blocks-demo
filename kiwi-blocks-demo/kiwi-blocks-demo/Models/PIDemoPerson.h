@@ -14,6 +14,4 @@
 @property(nonatomic, copy) NSString *role;
 @property(nonatomic, copy) NSArray *blogPosts;
 
-+ (instancetype)modelFromJSONDictionary:(NSDictionary *)JSONDictionary;
-
 @end

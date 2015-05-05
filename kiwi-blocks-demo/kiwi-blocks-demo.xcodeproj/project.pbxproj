@@ -16,6 +16,7 @@
 		DC16080B1AF84B0800C0E891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1608091AF84B0800C0E891 /* LaunchScreen.xib */; };
 		DC1608211AF854DA00C0E891 /* PIDemoTestSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608201AF854DA00C0E891 /* PIDemoTestSpec.m */; };
 		DC1608261AF859FC00C0E891 /* PIDemoPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608251AF859FC00C0E891 /* PIDemoPerson.m */; };
+		DC16082A1AF85B9700C0E891 /* PIDemoBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		DC1608241AF859FC00C0E891 /* PIDemoPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoPerson.h; sourceTree = "<group>"; };
 		DC1608251AF859FC00C0E891 /* PIDemoPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoPerson.m; sourceTree = "<group>"; };
 		DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoModelProtocol.h; sourceTree = "<group>"; };
+		DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDemoBlogPost.h; sourceTree = "<group>"; };
+		DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDemoBlogPost.m; sourceTree = "<group>"; };
 		DF35199542001CF15D374607 /* Pods-kiwi-blocks-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiwi-blocks-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiwi-blocks-demoTests/Pods-kiwi-blocks-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */,
+				DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */,
+				DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */,
 				DC1608241AF859FC00C0E891 /* PIDemoPerson.h */,
 				DC1608251AF859FC00C0E891 /* PIDemoPerson.m */,
 			);
@@ -297,6 +302,7 @@
 				DC1608031AF84B0800C0E891 /* PIDemoViewController.m in Sources */,
 				DC1608001AF84B0800C0E891 /* PIDemoAppDelegate.m in Sources */,
 				DC1608261AF859FC00C0E891 /* PIDemoPerson.m in Sources */,
+				DC16082A1AF85B9700C0E891 /* PIDemoBlogPost.m in Sources */,
 				DC1607FD1AF84B0800C0E891 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
