@@ -160,9 +160,9 @@
 		DC1608231AF859CB00C0E891 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */,
 				DC1608321AF86CF500C0E891 /* PIDemoDataStore.h */,
 				DC1608331AF86CF500C0E891 /* PIDemoDataStore.m */,
+				DC1608271AF85A3C00C0E891 /* PIDemoModelProtocol.h */,
 				DC1608281AF85B9700C0E891 /* PIDemoBlogPost.h */,
 				DC1608291AF85B9700C0E891 /* PIDemoBlogPost.m */,
 				DC1608241AF859FC00C0E891 /* PIDemoPerson.h */,
