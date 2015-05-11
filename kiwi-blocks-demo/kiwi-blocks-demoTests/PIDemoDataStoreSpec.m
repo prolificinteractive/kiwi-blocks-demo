@@ -52,7 +52,7 @@ describe(@"PIDemoDataStore", ^{
                      };
         });
         
-        it(@"Should deserialize into Person objects V1", ^{
+        it(@"Should deserialize into Person objects", ^{
             
             __block PIDemoPerson *leela;
             __block PIDemoPerson *professor;
@@ -87,31 +87,6 @@ describe(@"PIDemoDataStore", ^{
             [[professorsBlogPost.title should] equal:@"Good news, everybody!"];
             [[professorsBlogPost.url.absoluteString should]
              equal:@"http://some.website/blog/good-news"];
-            
-        });
-        
-        it(@"Should deserialize into Person objects V2", ^{
-            
-            KWCaptureSpy *serverCompletionBlockSpy = [PIDemoServer captureArgument:@selector(GET:parameters:completion:) atIndex:2];
-            
-            [[PIDemoServer should] receive:@selector(GET:parameters:completion:) withArguments:@"people", @{ @"apiKey" : @"abc" }, any()];
-            
-            __block PIDemoPerson *leela;
-            __block PIDemoPerson *professor;
-            
-            [PIDemoDataStore
-             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
-                 leela = people[0];
-                 professor = people[1];
-             }];
-            
-            PIDemoServerCallback serverCompletionBlock =
-            serverCompletionBlockSpy.argument;
-            serverCompletionBlock(json, nil);
-            
-            [[leela.name should] equal:@"Leela"];
-            
-            [[professor.name should] equal:@"Professor Farnsworth"];
             
         });
 
