@@ -8,7 +8,7 @@ Kiwi exists in an ecosystem of iOS [testing](https://developer.apple.com/library
 
 ## Business Specifications
 
-You've been given the task of writing an application that displays blog posts. This is what the JSON you're expected to work with is going to look like:
+You've been given the task of writing an application that displays blog posts associated with people. This is what the JSON you're expected to work with is going to look like:
 
 ``` JSON
 {
@@ -41,4 +41,16 @@ You've been given the task of writing an application that displays blog posts. T
 }
 ```
 
+You've also heard that the server isn't up yet. But, thats's okay - you know Kiwi can help you write code that behaves properly with the input you do have. Let's take a look at the start of this very application: http://github.com/prolificinteractive/kiwi-blocks-demo
+
 ## Kiwi Specifications
+
+The demo project has elements of how a typical Prolific application may start - a class that represents network interaction (`PIDemoServer`), classes that represent the core application models (`PIDemoPerson`, `PIDemoBlogPost`), and a class that acts as a layer between the details of creating models from JSON and the rest of the application code (`PIDemoDataStore`). The key methods in `PIDemoServer` and `PIDemoDataStore` utilize `completion` blocks to interact with their calling classes. 
+
+Given our focus on one specific Kiwi stub type, there are details missing from what a Prolific project might actually look like - most notably, a robust strategy for translating models (Prolific often uses [Mantle](http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/)). Also, given this application is supposed to be covered by tests, there should be test specs for how our server and model classes are to behave. However, the type of test we're interested in is in `PIDemoDataStoreSpec` - let's take a look.
+
+### stub:withBlock:
+
+
+
+### 
