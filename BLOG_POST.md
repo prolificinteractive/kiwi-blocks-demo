@@ -1,6 +1,6 @@
 # Kiwi and Blocks
 
-A recent iOS project has familiarized Prolific with a new testing framework for us: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a format for verifying expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
+A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a format for verifying expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
 
 ![Kiwi logo](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post/images/kiwi1.png?token=AFNCYa8wDXlhi2PZbrN9ffO03SK11W9Eks5Vbe6-wA%3D%3D "Kiwi logo")
 
@@ -51,5 +51,100 @@ The demo project has elements of how a typical Prolific application may start - 
 
 Given our focus on one specific Kiwi stub type, there are details missing from what a Prolific project might actually look like - most notably, a robust strategy for translating models (Prolific often uses [Mantle](http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/)). Also, given this application is supposed to be covered by tests, there should be test specs for how our server and model classes are to behave. However, the type of test we're interested in is in `PIDemoDataStoreSpec` - let's take a look.
 
-### Kiwi
+### Kiwi's `stub:withBlock:`
 
+Kiwi has pretty comprehensive documentation which includes [a section on stubs](https://github.com/kiwi-bdd/Kiwi/wiki/Mocks-and-Stubs#stubs). However, it doesn't yet include a mention of a stubbing method that will come in handy during our tests: `stub:withBlock:`. Let's see it in action as we test `PIDemoDataStore`'s `fetchPeopleWithCompletion:` method:
+
+``` objective-c
+#import "Kiwi.h"
+#import "PIDemoBlogPost.h"
+#import "PIDemoDataStore.h"
+#import "PIDemoPerson.h"
+#import "PIDemoServer.h"
+
+SPEC_BEGIN(PIDemoDataStoreSpec)
+
+describe(@"PIDemoDataStore", ^{
+
+  describe(@"Class method: fetchPeopleWithCompletion:", ^{
+
+    typedef void (^PIDemoServerCallback)(id JSON, NSError *error);
+
+    context(@"Data fetched successfully", ^{
+
+      __block NSDictionary *json;
+
+      beforeEach(^{
+
+        json = @{
+          @"people" : @[
+            @{
+              @"name" : @"Leela",
+              @"role" : @"Space Captain",
+              @"blog_posts" : @[
+                @{
+                  @"title" : @"First day on the Planet Express",
+                  @"url" : @"http://some.website/blog/first-day"
+                }
+              ]
+            },
+            @{
+              @"name" : @"Professor Farnsworth",
+              @"role" : @"Scientist",
+              @"blog_posts" : @[
+                @{
+                  @"title" : @"Good news, everybody!",
+                  @"url" : @"http://some.website/blog/good-news"
+                }
+              ]
+            }
+          ]
+        };
+      });
+
+      it(@"Should deserialize into Person objects", ^{
+
+        __block PIDemoPerson *leela;
+        __block PIDemoPerson *professor;
+
+        [PIDemoServer stub:@selector(GET:parameters:completion:)
+                 withBlock:^id(NSArray *params) {
+
+                   PIDemoServerCallback completion = params[2];
+                   completion(json, nil);
+
+                   return nil;
+                 }];
+
+        [PIDemoDataStore
+            fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
+              leela = people[0];
+              professor = people[1];
+            }];
+
+        [[leela.name should] equal:@"Leela"];
+        [[leela.role should] equal:@"Space Captain"];
+
+        PIDemoBlogPost *leelasBlogPost = leela.blogPosts[0];
+        [[leelasBlogPost.title should]
+            equal:@"First day on the Planet Express"];
+        [[leelasBlogPost.url.absoluteString should]
+            equal:@"http://some.website/blog/first-day"];
+
+        [[professor.name should] equal:@"Professor Farnsworth"];
+        [[professor.role should] equal:@"Scientist"];
+
+        PIDemoBlogPost *professorsBlogPost = professor.blogPosts[0];
+        [[professorsBlogPost.title should] equal:@"Good news, everybody!"];
+        [[professorsBlogPost.url.absoluteString should]
+            equal:@"http://some.website/blog/good-news"];
+
+      });
+
+    });
+
+  });
+});
+
+SPEC_END
+```
