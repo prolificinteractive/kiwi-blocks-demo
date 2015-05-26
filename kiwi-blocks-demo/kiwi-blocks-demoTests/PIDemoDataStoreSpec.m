@@ -50,12 +50,6 @@ describe(@"PIDemoDataStore", ^{
             }
           ]
         };
-      });
-
-      it(@"Should deserialize into Person objects", ^{
-
-        __block PIDemoPerson *leela;
-        __block PIDemoPerson *professor;
 
         [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
@@ -65,6 +59,13 @@ describe(@"PIDemoDataStore", ^{
 
                    return nil;
                  }];
+
+      });
+
+      it(@"Should deserialize into Person objects", ^{
+
+        __block PIDemoPerson *leela;
+        __block PIDemoPerson *professor;
 
         [PIDemoDataStore
             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
