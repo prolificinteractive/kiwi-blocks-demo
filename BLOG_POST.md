@@ -122,7 +122,7 @@ describe(@"PIDemoDataStore", ^{
 SPEC_END
 ```
 
-The `stub:withBlock:` call we make allows us to cleanly make a call to the completion block with canned information:
+The `stub:withBlock:` call allows us to cleanly make a call to the completion block with canned information:
 
 ```objective-c
 [PIDemoServer stub:@selector(GET:parameters:completion:)
@@ -136,3 +136,4 @@ The `stub:withBlock:` call we make allows us to cleanly make a call to the compl
 ```
 
 which we are then able to use in order to verify behavior.
+
