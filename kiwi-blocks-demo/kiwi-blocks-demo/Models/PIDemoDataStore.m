@@ -19,10 +19,12 @@ static NSString *const kPIDemoRequestPathPeople = @"people";
 + (void)fetchPeopleWithCompletion:(void (^)(NSArray *, NSError *))completion {
 
   [PIDemoServer GET:kPIDemoRequestPathPeople
-         parameters:@{
-           @"apiKey" : @"abc"
-         }
+         parameters:nil
          completion:^(id JSON, NSError *error) {
+
+           if (error) {
+             completion(nil, error);
+           }
 
            NSMutableArray *people = [NSMutableArray array];
            for (NSDictionary *personJSON in JSON[@"people"]) {

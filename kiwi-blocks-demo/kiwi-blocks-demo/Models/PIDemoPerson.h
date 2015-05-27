@@ -10,8 +10,8 @@
 
 @interface PIDemoPerson : NSObject <PIDemoModelProtocol>
 
-@property(nonatomic, copy) NSString *name;
-@property(nonatomic, copy) NSString *role;
-@property(nonatomic, copy) NSArray *blogPosts;
+@property(nonatomic, copy, readonly) NSString *name;
+@property(nonatomic, copy, readonly) NSString *role;
+@property(nonatomic, copy, readonly) NSArray *blogPosts;
 
 @end

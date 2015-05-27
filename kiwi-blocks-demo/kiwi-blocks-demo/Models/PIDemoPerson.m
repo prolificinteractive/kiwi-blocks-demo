@@ -9,6 +9,14 @@
 #import "PIDemoBlogPost.h"
 #import "PIDemoPerson.h"
 
+@interface PIDemoPerson ()
+
+@property(nonatomic, copy, readwrite) NSString *name;
+@property(nonatomic, copy, readwrite) NSString *role;
+@property(nonatomic, copy, readwrite) NSArray *blogPosts;
+
+@end
+
 @implementation PIDemoPerson
 
 #pragma mark - Protocol conformance

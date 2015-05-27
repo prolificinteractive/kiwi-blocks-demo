@@ -10,7 +10,7 @@
 
 @interface PIDemoBlogPost : NSObject <PIDemoModelProtocol>
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, strong) NSURL *url;
+@property(nonatomic, copy, readonly) NSString *title;
+@property(nonatomic, strong, readonly) NSURL *url;
 
 @end
