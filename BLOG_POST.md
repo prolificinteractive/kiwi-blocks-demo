@@ -22,10 +22,6 @@ You've been given the task of writing an application that displays blog posts as
 				{
 					"title" : "Making Mantle Deserialization Generic",
 					"url" : "http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/"
-				},
-				{
-					"title" : "Why Use NS_OPTIONS for Bitmasks",
-					"url" : "http://blog.prolificinteractive.com/2015/03/18/why-use-ns_options-for-bitmasks/"
 				}
 			]
 		}
@@ -113,16 +109,8 @@ describe(@"PIDemoDataStore", ^{
         PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
         [[jorgesBlogPost.title should]
             equal:@"Making Mantle Deserialization Generic"];
-        [[jorgesBlogPost.url.absoluteString should]
-            equal:@"http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/"];
-
-        [[irene.name should] equal:@"Irene Duke"];
-        [[irene.role should] equal:@"Senior Android Engineer"];
-
-        PIDemoBlogPost *irenesBlogPost = irene.blogPosts[0];
-        [[irenesBlogPost.title should] equal:@"A New Beginning"];
-        [[irenesBlogPost.url.absoluteString should]
-            equal:@"http://blog.prolificinteractive.com/2014/11/19/new-beginning/"];
+        
+        // ...etc...
 
       });
 
@@ -133,3 +121,18 @@ describe(@"PIDemoDataStore", ^{
 
 SPEC_END
 ```
+
+The `stub:withBlock:` call we make allows us to cleanly make a call to the completion block with canned information:
+
+```objective-c
+[PIDemoServer stub:@selector(GET:parameters:completion:)
+                 withBlock:^id(NSArray *params) {
+
+                   PIDemoServerCallback completion = params[2];
+                   completion(json, nil);
+
+                   return nil;
+                 }];
+```
+
+which we are then able to use in order to verify behavior.
