@@ -8,6 +8,13 @@
 
 #import "PIDemoBlogPost.h"
 
+@interface PIDemoBlogPost ()
+
+@property(nonatomic, copy, readwrite) NSString *title;
+@property(nonatomic, strong, readwrite) NSURL *url;
+
+@end
+
 @implementation PIDemoBlogPost
 
 #pragma mark - Protocol conformance
