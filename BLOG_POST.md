@@ -1,4 +1,4 @@
-# Kiwi and Blocks
+# Testing with Kiwi's stub:WithBlock: Method
 
 A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a framework for testing expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
 
