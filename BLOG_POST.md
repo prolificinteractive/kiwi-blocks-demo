@@ -1,6 +1,6 @@
 # Kiwi and Blocks
 
-A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a format for verifying expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
+A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a framework for testing expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
 
 ![Kiwi logo](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post/images/kiwi1.png?token=AFNCYa8wDXlhi2PZbrN9ffO03SK11W9Eks5Vbe6-wA%3D%3D "Kiwi logo")
 
@@ -28,16 +28,6 @@ You've been given the task of writing an application that displays blog posts as
 					"url" : "http://blog.prolificinteractive.com/2015/03/18/why-use-ns_options-for-bitmasks/"
 				}
 			]
-		},
-		{
-			"name" : "Irene Duke",
-			"role" : "Senior Android Engineer",
-			"blog_posts" : [
-				{
-					"title" : "A New Beginning",
-					"url" : "http://blog.prolificinteractive.com/2014/11/19/new-beginning/"
-				}
-			]
 		}
 	]
 }
@@ -51,17 +41,11 @@ The demo project has elements of how a typical Prolific application may start - 
 
 Given our focus on one specific Kiwi stub type, there are details missing from what a Prolific project might actually look like - most notably, a robust strategy for translating models (Prolific often uses [Mantle](http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/)). Also, given this application is supposed to be covered by tests, there should be test specs for how our server and model classes are to behave. However, the type of test we're interested in is in `PIDemoDataStoreSpec` - let's take a look.
 
-### Kiwi's `stub:withBlock:`
+### Kiwi's `stub:withBlock:` in Action
 
-Kiwi has pretty comprehensive documentation which includes [a section on stubs](https://github.com/kiwi-bdd/Kiwi/wiki/Mocks-and-Stubs#stubs). However, it doesn't yet include a mention of a stubbing method that will come in handy during our tests: `stub:withBlock:`. Let's see it in action as we test `PIDemoDataStore`'s `fetchPeopleWithCompletion:` method:
+Kiwi has pretty comprehensive documentation which includes [a section on stubs](https://github.com/kiwi-bdd/Kiwi/wiki/Mocks-and-Stubs#stubs). However, it doesn't yet include a mention of the stubbing method that will come in handy during our tests: `stub:withBlock:`. Let's see it in action as we test `PIDemoDataStore`'s `fetchPeopleWithCompletion:` method:
 
 ``` objective-c
-#import "Kiwi.h"
-#import "PIDemoBlogPost.h"
-#import "PIDemoDataStore.h"
-#import "PIDemoPerson.h"
-#import "PIDemoServer.h"
-
 SPEC_BEGIN(PIDemoDataStoreSpec)
 
 describe(@"PIDemoDataStore", ^{
@@ -79,33 +63,27 @@ describe(@"PIDemoDataStore", ^{
         json = @{
           @"people" : @[
             @{
-              @"name" : @"Leela",
-              @"role" : @"Space Captain",
+              @"name" : @"Jorge Luis Mendez",
+              @"role" : @"Senior iOS Engineer",
               @"blog_posts" : @[
                 @{
-                  @"title" : @"First day on the Planet Express",
-                  @"url" : @"http://some.website/blog/first-day"
-                }
+                  @"title" : @"Making Mantle Deserialization Generic",
+                  @"url" : @"http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/"
+                }              
               ]
             },
             @{
-              @"name" : @"Professor Farnsworth",
-              @"role" : @"Scientist",
+              @"name" : @"Irene Duke",
+              @"role" : @"Senior Android Engineer",
               @"blog_posts" : @[
                 @{
-                  @"title" : @"Good news, everybody!",
-                  @"url" : @"http://some.website/blog/good-news"
+                  @"title" : @"A New Beginning",
+                  @"url" : @"http://blog.prolificinteractive.com/2014/11/19/new-beginning/"
                 }
               ]
             }
           ]
         };
-      });
-
-      it(@"Should deserialize into Person objects", ^{
-
-        __block PIDemoPerson *leela;
-        __block PIDemoPerson *professor;
 
         [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
@@ -116,28 +94,35 @@ describe(@"PIDemoDataStore", ^{
                    return nil;
                  }];
 
+      });
+
+      it(@"Should deserialize into Person objects", ^{
+
+        __block PIDemoPerson *leela;
+        __block PIDemoPerson *professor;
+
         [PIDemoDataStore
             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
-              leela = people[0];
-              professor = people[1];
+              jorge = people[0];
+              irene = people[1];
             }];
 
-        [[leela.name should] equal:@"Leela"];
-        [[leela.role should] equal:@"Space Captain"];
+        [[jorge.name should] equal:@"Jorge Luis Mendez"];
+        [[jorge.role should] equal:@"Senior iOS Engineer"];
 
-        PIDemoBlogPost *leelasBlogPost = leela.blogPosts[0];
-        [[leelasBlogPost.title should]
-            equal:@"First day on the Planet Express"];
-        [[leelasBlogPost.url.absoluteString should]
-            equal:@"http://some.website/blog/first-day"];
+        PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
+        [[jorgesBlogPost.title should]
+            equal:@"Making Mantle Deserialization Generic"];
+        [[jorgesBlogPost.url.absoluteString should]
+            equal:@"http://blog.prolificinteractive.com/2014/12/15/making-mantle-deserialization-generic/"];
 
-        [[professor.name should] equal:@"Professor Farnsworth"];
-        [[professor.role should] equal:@"Scientist"];
+        [[irene.name should] equal:@"Irene Duke"];
+        [[irene.role should] equal:@"Senior Android Engineer"];
 
-        PIDemoBlogPost *professorsBlogPost = professor.blogPosts[0];
-        [[professorsBlogPost.title should] equal:@"Good news, everybody!"];
-        [[professorsBlogPost.url.absoluteString should]
-            equal:@"http://some.website/blog/good-news"];
+        PIDemoBlogPost *irenesBlogPost = irene.blogPosts[0];
+        [[irenesBlogPost.title should] equal:@"A New Beginning"];
+        [[irenesBlogPost.url.absoluteString should]
+            equal:@"http://blog.prolificinteractive.com/2014/11/19/new-beginning/"];
 
       });
 
