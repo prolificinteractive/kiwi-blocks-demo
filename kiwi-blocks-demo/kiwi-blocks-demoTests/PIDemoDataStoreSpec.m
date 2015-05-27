@@ -29,22 +29,24 @@ describe(@"PIDemoDataStore", ^{
         json = @{
           @"people" : @[
             @{
-              @"name" : @"Leela",
-              @"role" : @"Space Captain",
+              @"name" : @"Jorge Luis Mendez",
+              @"role" : @"Senior iOS Engineer",
               @"blog_posts" : @[
                 @{
-                  @"title" : @"First day on the Planet Express",
-                  @"url" : @"http://some.website/blog/first-day"
+                  @"title" : @"Making Mantle Deserialization Generic",
+                  @"url" : @"http://blog.prolificinteractive.com/2014/12/15/"
+                  @"making-mantle-deserialization-generic/"
                 }
               ]
             },
             @{
-              @"name" : @"Professor Farnsworth",
-              @"role" : @"Scientist",
+              @"name" : @"Irene Duke",
+              @"role" : @"Senior Android Engineer",
               @"blog_posts" : @[
                 @{
-                  @"title" : @"Good news, everybody!",
-                  @"url" : @"http://some.website/blog/good-news"
+                  @"title" : @"A New Beginning",
+                  @"url" : @"http://blog.prolificinteractive.com/2014/11/19/"
+                  @"new-beginning/"
                 }
               ]
             }
@@ -64,31 +66,33 @@ describe(@"PIDemoDataStore", ^{
 
       it(@"Should deserialize into Person objects", ^{
 
-        __block PIDemoPerson *leela;
-        __block PIDemoPerson *professor;
+        __block PIDemoPerson *jorge;
+        __block PIDemoPerson *irene;
 
         [PIDemoDataStore
             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
-              leela = people[0];
-              professor = people[1];
+              jorge = people[0];
+              irene = people[1];
             }];
 
-        [[leela.name should] equal:@"Leela"];
-        [[leela.role should] equal:@"Space Captain"];
+        [[jorge.name should] equal:@"Jorge Luis Mendez"];
+        [[jorge.role should] equal:@"Senior iOS Engineer"];
 
-        PIDemoBlogPost *leelasBlogPost = leela.blogPosts[0];
-        [[leelasBlogPost.title should]
-            equal:@"First day on the Planet Express"];
-        [[leelasBlogPost.url.absoluteString should]
-            equal:@"http://some.website/blog/first-day"];
+        PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
+        [[jorgesBlogPost.title should]
+            equal:@"Making Mantle Deserialization Generic"];
+        [[jorgesBlogPost.url.absoluteString should]
+            equal:@"http://blog.prolificinteractive.com/2014/12/15/"
+            @"making-mantle-deserialization-generic/"];
 
-        [[professor.name should] equal:@"Professor Farnsworth"];
-        [[professor.role should] equal:@"Scientist"];
+        [[irene.name should] equal:@"Irene Duke"];
+        [[irene.role should] equal:@"Senior Android Engineer"];
 
-        PIDemoBlogPost *professorsBlogPost = professor.blogPosts[0];
-        [[professorsBlogPost.title should] equal:@"Good news, everybody!"];
-        [[professorsBlogPost.url.absoluteString should]
-            equal:@"http://some.website/blog/good-news"];
+        PIDemoBlogPost *irenesBlogPost = irene.blogPosts[0];
+        [[irenesBlogPost.title should] equal:@"A New Beginning"];
+        [[irenesBlogPost.url.absoluteString should]
+            equal:@"http://blog.prolificinteractive.com/2014/11/19/"
+                  @"new-beginning/"];
 
       });
 
