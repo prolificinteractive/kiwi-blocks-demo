@@ -94,8 +94,8 @@ describe(@"PIDemoDataStore", ^{
 
       it(@"Should deserialize into Person objects", ^{
 
-        __block PIDemoPerson *leela;
-        __block PIDemoPerson *professor;
+        __block PIDemoPerson *jorge;
+        __block PIDemoPerson *irene;
 
         [PIDemoDataStore
             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
