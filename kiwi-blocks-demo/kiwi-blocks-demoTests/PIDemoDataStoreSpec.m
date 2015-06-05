@@ -20,7 +20,7 @@ describe(@"PIDemoDataStore", ^{
 
     typedef void (^PIDemoServerCallback)(id JSON, NSError *error);
 
-    context(@"Data fetched successfully", ^{
+    context(@"Server request successful", ^{
 
       __block NSDictionary *json;
 
@@ -75,30 +75,69 @@ describe(@"PIDemoDataStore", ^{
               irene = people[1];
             }];
 
-        [[jorge.name should] equal:@"Jorge Luis Mendez"];
-        [[jorge.role should] equal:@"Senior iOS Engineer"];
+        [[jorge.name shouldEventually] equal:@"Jorge Luis Mendez"];
+        [[jorge.role shouldEventually] equal:@"Senior iOS Engineer"];
 
         PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
-        [[jorgesBlogPost.title should]
+        [[jorgesBlogPost.title shouldEventually]
             equal:@"Making Mantle Deserialization Generic"];
-        [[jorgesBlogPost.url.absoluteString should]
+        [[jorgesBlogPost.url.absoluteString shouldEventually]
             equal:@"http://blog.prolificinteractive.com/2014/12/15/"
             @"making-mantle-deserialization-generic/"];
 
-        [[irene.name should] equal:@"Irene Duke"];
-        [[irene.role should] equal:@"Senior Android Engineer"];
+        [[irene.name shouldEventually] equal:@"Irene Duke"];
+        [[irene.role shouldEventually] equal:@"Senior Android Engineer"];
 
         PIDemoBlogPost *irenesBlogPost = irene.blogPosts[0];
-        [[irenesBlogPost.title should] equal:@"A New Beginning"];
-        [[irenesBlogPost.url.absoluteString should]
+        [[irenesBlogPost.title shouldEventually] equal:@"A New Beginning"];
+        [[irenesBlogPost.url.absoluteString shouldEventually]
             equal:@"http://blog.prolificinteractive.com/2014/11/19/"
-                  @"new-beginning/"];
+            @"new-beginning/"];
+
+      });
+
+    });
+
+    context(@"Server request not successful", ^{
+
+      __block NSError *serverError;
+
+      beforeEach(^{
+
+        serverError = [NSError errorWithDomain:@"test"
+                                          code:100
+                                      userInfo:@{
+                                        @"user" : @"info"
+                                      }];
+
+        [PIDemoServer stub:@selector(GET:parameters:completion:)
+                 withBlock:^id(NSArray *params) {
+
+                   PIDemoServerCallback completion = params[2];
+                   completion(nil, serverError);
+
+                   return nil;
+                 }];
+
+      });
+
+      it(@"Should callback with error", ^{
+
+        __block NSError *errorReceived;
+
+        [PIDemoDataStore
+            fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
+              errorReceived = error;
+            }];
+
+        [[errorReceived shouldEventually] equal:serverError];
 
       });
 
     });
 
   });
+
 });
 
 SPEC_END

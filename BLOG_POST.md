@@ -103,19 +103,16 @@ describe(@"PIDemoDataStore", ^{
               irene = people[1];
             }];
 
-        [[jorge.name should] equal:@"Jorge Luis Mendez"];
-        [[jorge.role should] equal:@"Senior iOS Engineer"];
+        [[jorge.name shouldEventually] equal:@"Jorge Luis Mendez"];
+        [[jorge.role shouldEventualy] equal:@"Senior iOS Engineer"];
 
         PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
-        [[jorgesBlogPost.title should]
-            equal:@"Making Mantle Deserialization Generic"];
+        [[jorgesBlogPost.title shouldEventually] equal:@"Making Mantle Deserialization Generic"];
         
         // ...etc...
 
       });
-
     });
-
   });
 });
 
@@ -124,7 +121,7 @@ SPEC_END
 
 The `stub:withBlock:` call allows us to cleanly make a call to the completion block with canned information:
 
-```objective-c
+``` objective-c
 [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
 
@@ -137,3 +134,42 @@ The `stub:withBlock:` call allows us to cleanly make a call to the completion bl
 
 which we are then able to use in order to verify behavior.
 
+Similarly, we could stub the scenario where the server returns an error:
+``` objective-c
+      __block NSError *serverError;
+
+      beforeEach(^{
+
+        serverError = [NSError errorWithDomain:@"test"
+                                          code:100
+                                      userInfo:@{
+                                        @"user" : @"info"
+                                      }];
+
+        [PIDemoServer stub:@selector(GET:parameters:completion:)
+                 withBlock:^id(NSArray *params) {
+
+                   PIDemoServerCallback completion = params[2];
+                   completion(nil, serverError);
+
+                   return nil;
+                 }];
+      });
+```
+
+And write tests for the applications expected behavior:
+
+``` objective-c
+it(@"Should callback with error", ^{
+
+        __block NSError *errorReceived;
+
+        [PIDemoDataStore
+            fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
+              errorReceived = error;
+            }];
+
+        [[errorReceived shouldEventually] equal:serverError];
+
+      });
+```

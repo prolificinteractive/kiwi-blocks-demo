@@ -15,6 +15,7 @@
     completion:(void (^)(id JSON, NSError *error))completion {
 
   // Let's imagine an error is always returned from the server for some reason
+  // We can still test expected application behavior for different server responses
   NSError *errorAlwaysReturned =
       [NSError errorWithDomain:@"com.prolificinteractive.demo.error"
                           code:-1
