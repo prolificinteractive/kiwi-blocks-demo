@@ -140,11 +140,7 @@ Similarly, we could stub the scenario where the server returns an error:
 
       beforeEach(^{
 
-        serverError = [NSError errorWithDomain:@"test"
-                                          code:100
-                                      userInfo:@{
-                                        @"user" : @"info"
-                                      }];
+        serverError = [NSError errorWithDomain:@"test" code:100 userInfo:@{ @"user" : @"info" }];
 
         [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
@@ -157,7 +153,7 @@ Similarly, we could stub the scenario where the server returns an error:
       });
 ```
 
-And write tests for the applications expected behavior:
+And test the application's expected behavior:
 
 ``` objective-c
 it(@"Should callback with error", ^{
@@ -173,3 +169,5 @@ it(@"Should callback with error", ^{
 
       });
 ```
+
+![Kiwi test results](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post_v2/images/kiwi-test-results.png?token=AFNCYWAk7V8V1DXie5wWmlJjrVhNMbLPks5VevkxwA%3D%3D "Kiwi test results")
