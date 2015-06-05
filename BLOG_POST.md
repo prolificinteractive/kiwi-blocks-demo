@@ -2,7 +2,7 @@
 
 A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a framework for testing expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
 
-![Kiwi logo](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post/images/kiwi1.png?token=AFNCYa8wDXlhi2PZbrN9ffO03SK11W9Eks5Vbe6-wA%3D%3D "Kiwi logo")
+![Kiwi logo](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/master/images/kiwi1.png?token=AFNCYUL2upZ84VdVqUqJ4y-qWlqbiCdAks5Vev7kwA%3D%3D "Kiwi logo")
 
 Kiwi exists in an ecosystem of [testing](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/testing_with_xcode/Introduction/Introduction.html) [frameworks](https://github.com/specta/specta) [gaining](https://github.com/kif-framework/KIF) [popularity](https://github.com/calabash/calabash-ios) [among](https://github.com/facebook/ios-snapshot-test-case) [iOS](https://github.com/pivotal/cedar) [developers](https://github.com/Quick/Quick). There are plenty of great pieces out there exploring the pros and cons of each - and there is no definitive call on which is best to use. However, what is becoming more definitive is that iOS applications are not exempt from the notion that testing frameworks can help greatly in developing quality software. 
 
@@ -174,6 +174,6 @@ it(@"Should callback with error", ^{
 
 Awesome! Without the server being in place we're able to get to work with tests to verify our expectation of how the application should behave.
 
-![Kiwi test results](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post_v2/images/kiwi-test-results.png?token=AFNCYWAk7V8V1DXie5wWmlJjrVhNMbLPks5VevkxwA%3D%3D "Kiwi test results")
+![Kiwi test results](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/master/images/kiwi-test-results.png?token=AFNCYT2ygfXbl5zBVIftWyr8RaF7z8ecks5Vev74wA%3D%3D "Kiwi test results")
 
 While it isn't written solely for stubbing server responses, this is where I've found it most helpful myself. If you're working on a project and using Kiwi, give `stub:withBlock:` a try for testing methods that take in blocks.
