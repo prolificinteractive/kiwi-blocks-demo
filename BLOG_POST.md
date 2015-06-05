@@ -1,4 +1,4 @@
-# Kiwi and Blocks
+# Testing with Kiwi's stub:WithBlock: Method
 
 A recent iOS project has familiarized Prolific with a new testing framework: [Kiwi](https://github.com/kiwi-bdd/Kiwi). Kiwi is described as a "Behavior Driven Development (BDD) library for iOS development" - meaning it provides a framework for testing expected code _behavior_. The purpose of defining behavior is to catch when it unintentionally changes during refactors or implementation of new features. 
 
@@ -94,8 +94,8 @@ describe(@"PIDemoDataStore", ^{
 
       it(@"Should deserialize into Person objects", ^{
 
-        __block PIDemoPerson *leela;
-        __block PIDemoPerson *professor;
+        __block PIDemoPerson *jorge;
+        __block PIDemoPerson *irene;
 
         [PIDemoDataStore
             fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
@@ -103,19 +103,16 @@ describe(@"PIDemoDataStore", ^{
               irene = people[1];
             }];
 
-        [[jorge.name should] equal:@"Jorge Luis Mendez"];
-        [[jorge.role should] equal:@"Senior iOS Engineer"];
+        [[jorge.name shouldEventually] equal:@"Jorge Luis Mendez"];
+        [[jorge.role shouldEventualy] equal:@"Senior iOS Engineer"];
 
         PIDemoBlogPost *jorgesBlogPost = jorge.blogPosts[0];
-        [[jorgesBlogPost.title should]
-            equal:@"Making Mantle Deserialization Generic"];
+        [[jorgesBlogPost.title shouldEventually] equal:@"Making Mantle Deserialization Generic"];
         
         // ...etc...
 
       });
-
     });
-
   });
 });
 
@@ -124,7 +121,7 @@ SPEC_END
 
 The `stub:withBlock:` call allows us to cleanly make a call to the completion block with canned information:
 
-```objective-c
+``` objective-c
 [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
 
@@ -137,3 +134,46 @@ The `stub:withBlock:` call allows us to cleanly make a call to the completion bl
 
 which we are then able to use in order to verify behavior.
 
+Similarly, we could stub the scenario where the server returns an error:
+``` objective-c
+      __block NSError *serverError;
+
+      beforeEach(^{
+
+        serverError = [NSError errorWithDomain:@"test" code:100 userInfo:@{ @"user" : @"info" }];
+
+        [PIDemoServer stub:@selector(GET:parameters:completion:)
+                 withBlock:^id(NSArray *params) {
+
+                   PIDemoServerCallback completion = params[2];
+                   completion(nil, serverError);
+
+                   return nil;
+                 }];
+      });
+```
+
+And test the application's expected behavior:
+
+``` objective-c
+it(@"Should callback with error", ^{
+
+        __block NSError *errorReceived;
+
+        [PIDemoDataStore
+            fetchPeopleWithCompletion:^(NSArray *people, NSError *error) {
+              errorReceived = error;
+            }];
+
+        [[errorReceived shouldEventually] equal:serverError];
+
+      });
+```
+
+## The Result
+
+Awesome! Without the server being in place we're able to get to work with tests to verify our expectation of how the application should behave.
+
+![Kiwi test results](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post_v2/images/kiwi-test-results.png?token=AFNCYWAk7V8V1DXie5wWmlJjrVhNMbLPks5VevkxwA%3D%3D "Kiwi test results")
+
+While it isn't written solely for stubbing server responses, this is where I've found it most helpful myself. If you're working on a project and using Kiwi, give `stub:withBlock:` a try for testing methods that take in blocks.

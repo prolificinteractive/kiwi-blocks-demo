@@ -14,13 +14,8 @@
     parameters:(NSDictionary *)parameters
     completion:(void (^)(id JSON, NSError *error))completion {
 
-  // Let's imagine an error is always returned from the server for some reason
-  NSError *errorAlwaysReturned =
-      [NSError errorWithDomain:@"com.prolificinteractive.demo.error"
-                          code:-1
-                      userInfo:nil];
-
-  completion(nil, errorAlwaysReturned);
+  // Server isn't ready yet :(
+    
 }
 
 @end
