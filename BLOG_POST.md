@@ -170,4 +170,10 @@ it(@"Should callback with error", ^{
       });
 ```
 
+## The Result
+
+Awesome! Without the server being in place we're able to get to work with tests to verify our expectation of how the application should behave.
+
 ![Kiwi test results](https://raw.githubusercontent.com/prolificinteractive/kiwi-blocks-demo/feature/blog_post_v2/images/kiwi-test-results.png?token=AFNCYWAk7V8V1DXie5wWmlJjrVhNMbLPks5VevkxwA%3D%3D "Kiwi test results")
+
+While it isn't written solely for stubbing server responses, this is where I've found it most helpful myself. If you're working on a project and using Kiwi, give `stub:withBlock:` a try for testing methods that take in blocks.

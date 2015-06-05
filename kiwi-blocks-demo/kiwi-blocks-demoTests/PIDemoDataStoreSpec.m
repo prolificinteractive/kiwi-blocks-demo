@@ -104,11 +104,7 @@ describe(@"PIDemoDataStore", ^{
 
       beforeEach(^{
 
-        serverError = [NSError errorWithDomain:@"test"
-                                          code:100
-                                      userInfo:@{
-                                        @"user" : @"info"
-                                      }];
+        serverError = [NSError errorWithDomain:@"test" code:100 userInfo:@{ @"user" : @"info" }];
 
         [PIDemoServer stub:@selector(GET:parameters:completion:)
                  withBlock:^id(NSArray *params) {
